@@ -17,14 +17,14 @@
       <th scope="row"><?php echo $stt++?></th>
       <td><?php echo $item['name']?></td>
       <td>
-        <a href="#">Sửa</a>
-        <a href="index.php?act=deledm&id=<?php echo $item['id']?>" onclick="confirm('Bạn có xác nhận xóa không?')">Xóa</a>
+        <a style="color:black" href="index.php?act=update_dm&id=<?php echo $item['id']?>">Sửa</a>
+        <a style="color:black" href="index.php?act=deledm&id=<?php echo $item['id']?>" onclick="confirm('Bạn có xác nhận xóa không?')">Xóa</a>
       </td>
     </tr>
     <?php
     }
     ?>
-    <button style="" type="button" class="btn btn-primary" ><a href="index.php?act=adddm">Thêm danh mục</a></button>
+    <button  type="button" class="btn btn-primary" ><a href="index.php?act=adddm">Thêm danh mục</a></button>
   </tbody>
 </table>
 

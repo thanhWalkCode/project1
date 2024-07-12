@@ -1,11 +1,16 @@
 <?php
-function connect(){
-    $dburl = "mysql:host=localhost;dbname=project1" ;
-    $username = "root";
-    $password = "";
+function connect_pdo(){
+    $dburl = "mysql:dbname=project1;hostname:localhost";
+    $user = "root";
+    $pass = "";
     try{
-        $conn = new PDO($dburl,$username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMOR, PDO::ERRMODE_EXCEPTION)
+        $conn = new PDO($dburl,$user,$pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        echo "connected";
+    }catch(PDOException $e){
+        throw $e;
     }
+    // return $conn;
 }
+connect_pdo()
 ?>

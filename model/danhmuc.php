@@ -14,12 +14,13 @@ function loadAll_danhmuc(){
     return $listdanhmuc;
 }
 function loadOne_danhmuc($id){
-    $sql = "SELECT * FROM `danh_muc` WHERE `id_cate`={$id}";
+    $sql = "SELECT * FROM `danh_muc` WHERE `id`={$id}";
     $dm = pdo_query_one($sql);
     return $dm;
 }
 function update_danhmuc($id,$tenloai){
-    $sql = "UPDATE `danh_muc` SET `name_cate`='{$tenloai}' WHERE `id_cate`={$id}";
+    $sql = "UPDATE `danh_muc` SET `name`='{$tenloai}' WHERE `id`={$id}";
     pdo_execute($sql);
+    return true;
 }
 ?>
