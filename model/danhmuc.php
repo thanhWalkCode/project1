@@ -1,6 +1,6 @@
 <?php
-function insert_danhmuc($tenloai){
-    $sql = "INSERT INTO `danh_muc` (`name`) VALUES ('$tenloai')";
+function insert_danhmuc($tenloai,$img){
+    $sql = "INSERT INTO `danh_muc` (`name`, `anh_danh_muc`) VALUES ('$tenloai', '$img')";
     pdo_execute($sql);
     return true;
 }
@@ -18,8 +18,12 @@ function loadOne_danhmuc($id){
     $dm = pdo_query_one($sql);
     return $dm;
 }
-function update_danhmuc($id,$tenloai){
-    $sql = "UPDATE `danh_muc` SET `name`='{$tenloai}' WHERE `id`={$id}";
+function update_danhmuc($id,$tenloai,$img){
+    if($img == ""){
+        $sql = "UPDATE `danh_muc` SET `name` = '$tenloai' WHERE `danh_muc`.`id` = $id";
+    }else{
+        $sql = "UPDATE `danh_muc` SET `name` = '$tenloai', `anh_danh_muc` = '$img' WHERE `danh_muc`.`id` = $id";
+    }
     pdo_execute($sql);
     return true;
 }

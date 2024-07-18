@@ -9,7 +9,7 @@ function pdo_get_connection(){
 
     $conn = new PDO($dburl, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Kết nối thành công";
+    // echo "Kết nối thành công";
     return $conn;
 }
 

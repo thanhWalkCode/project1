@@ -1,3 +1,5 @@
+<?php 
+?>
 <div class="mobile-off-canvas-active">
             <a class="mobile-aside-close"><i class="la la-close"></i></a>
             <div class="header-mobile-aside-wrap">
@@ -148,29 +150,29 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="feature-wrap mb-30 feature-mrg-1">
                                 <img src="views/assets/images/icon-img/feature-icon-1.png" alt="">
-                                <h5>Best Product</h5>
-                                <span>Best Queality Products</span>
+                                <h5>Sản phẩm tốt nhất</h5>
+                                <span>Chất lượng tốt nhất</span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="feature-wrap mb-30 feature-mrg-2">
                                 <img src="views/assets/images/icon-img/feature-icon-2.png" alt="">
-                                <h5>100% fresh</h5>
-                                <span>Best Queality Products</span>
+                                <h5>100% hàng chính hãng </h5>
+                                <span>Giá cả đúng sàn </span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="feature-wrap mb-30 feature-mrg-3">
                                 <img src="views/assets/images/icon-img/feature-icon-3.png" alt="">
-                                <h5>Secure Payment</h5>
-                                <span>Best Queality Products</span>
+                                <h5>Bảo mật</h5>
+                                <span>Không chia sẻ thông tin</span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="feature-wrap mb-30 feature-mrg-4">
                                 <img src="views/assets/images/icon-img/feature-icon-4.png" alt="">
-                                <h5>Best Wood</h5>
-                                <span>Best Queality Products</span>
+                                <h5>Thoải mái tự nhiên</h5>
+                                <span>Thân thiên với người chưa và yêu sản phẩm công nghệ</span>
                             </div>
                         </div>
                     </div>
@@ -183,25 +185,40 @@
                 <div class="section-title-4 text-center">
                     <h2>Sản Phẩm đang được giảm giá </h2>
                 </div>
-                <div class="product-slider-active-2 owl-carousel">
-                    <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
-                        <div class="product-img mb-15">
-                            <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-1.jpg" alt="product"></a>
-                            <div class="product-action-3">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a>
-                                <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
-                                <a title="Add To Cart" href="#"><i class="la la-cart-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-2">
-                            <h4><a href="product-details.html">Simple Chair</a></h4>
-                            <span>Moving</span>
-                            <div class="pro-price-2">
-                                <span>$20.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
+                <div style="height:390px;" class="product-slider-active-2 owl-carousel">
+                <?php 
+                $count = 0;   
+                foreach($list as $item) { 
+                $count++;    
+                ?>
+    
+    <div style="height:400px;" class="product-wrap product-border-2 pro-hover-shadow mb-40">
+        <div style="height: 250px;" class="product-img mb-15">
+            <a href="product-details.html"><img style="height:100%" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
+            <div class="product-action-3">
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a>
+                <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
+                <a title="Add To Cart" href="#"><i class="la la-cart-plus"></i></a>
+            </div>
+        </div>
+        <div class="product-content-2">
+            <h4><a href="product-details.html"><?php echo $item['ten_san_pham']?></a></h4>
+            <span><?php echo $item['name']?></span>
+            <div class="pro-price-2">
+                <span><?php echo number_format($item['gia_san_pham'], 0, ',', '.')?> <span style="color: red;">VNĐ</span></span>
+                
+            </div>
+        </div>
+    </div>
+    
+    <?php 
+    if ($count > 4) { 
+        
+        break;
+    } 
+} 
+?>
+                    <!-- <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
                         <div class="product-img mb-15">
                             <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-2.jpg" alt="product"></a>
                             <div class="product-action-3">
@@ -269,8 +286,8 @@
                                 <span>$80.00</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
+                    </div> -->
+                    <!-- <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
                         <div class="product-img mb-15">
                             <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-2.jpg" alt="product"></a>
                             <div class="product-action-3">
@@ -287,10 +304,11 @@
                                 <span class="old-price">$90.00</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
+        <!-- Blog -->
         <div class="banner-area pb-75">
             <div class="container">
                 <div class="section-title-4 text-center">
@@ -362,25 +380,37 @@
                 </div>
             </div>
         </div>
+        <!-- danh mục nổi bật -->
         <div class="product-area pb-70 section-padding-3">
             <div class="container-fluid">
                 <div class="section-title-4 text-center">
-                    <h2>Furnitures Categories</h2>
+                    <h2>Danh mục nổi bật</h2>
                 </div>
                 <div class="product-tab-list nav pb-60">
-                    <a href="#product-1" data-bs-toggle="tab">
+                    <?php
+                    $count = 0;
+                    foreach($list as $name_dm){
+                        $count++
+                    ?>
+                    <a href="index.php?act=topsp" data-bs-toggle="tab">
                         <span>
-                            <img class="fixed-img" src="views/assets/images/icon-img/tab-1.png" alt="icon-img">
-                            <img class="hover-img" src="views/assets/images/icon-img/tab-1-white.png" alt="icon-img">
+                            <img  class="fixed-img" src="upload/icon/img2.png" alt="icon-img">
+                            <img  class="hover-img" src="upload/icon/img1.png" alt="icon-img">
                         </span>
-                        <h5>Living Room <br>Sofa</h5>
+                        <h5><?php echo $name_dm['name']?><br></h5>
                     </a>
-                    <a class="active" href="#product-2" data-bs-toggle="tab">
+                    <?php
+                if($count >= 4){
+                    break;
+                }    
+                }
+                    ?>
+                    <!-- <a class="active" href="#product-2" data-bs-toggle="tab">
                         <span>
                             <img class="fixed-img" src="views/assets/images/icon-img/tab-2.png" alt="icon-img">
                             <img class="hover-img" src="views/assets/images/icon-img/tab-2-white.png" alt="icon-img">
                         </span>
-                        <h5>Accent Chair <br>Easy</h5>
+                        <h5>ASUS <br>Easy</h5>
                     </a>
                     <a href="#product-3" data-bs-toggle="tab">
                         <span>
@@ -395,11 +425,12 @@
                             <img class="hover-img" src="views/assets/images/icon-img/tab-4-white.png" alt="icon-img">
                         </span>
                         <h5>Bookcase <br>Table</h5>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="tab-content jump">
                     <div id="product-1" class="tab-pane">
                         <div class="product-slider-active-2 owl-carousel">
+                            <?php $count = 0; foreach($load_top10 as $item){ ?>
                             <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
                                 <div class="product-img mb-15">
                                     <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-5.jpg" alt="product"></a>
@@ -410,14 +441,15 @@
                                     </div>
                                 </div>
                                 <div class="product-content-2">
-                                    <h4><a href="product-details.html">Simple Chair</a></h4>
-                                    <span>Moving</span>
+                                    <h4><a href="product-details.html"><?php echo $item['ten_san_pham']?></a></h4>
+                                    <span><?php echo $item['name']?></span>
                                     <div class="pro-price-2">
                                         <span>$20.00</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
+                            <?php if($count >=5) break; } ?>
+                            <!-- <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
                                 <div class="product-img mb-15">
                                     <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-4.jpg" alt="product"></a>
                                     <div class="product-action-3">
@@ -503,10 +535,10 @@
                                         <span class="old-price">$90.00</span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-                    <div id="product-2" class="tab-pane active">
+                    <!-- <div id="product-2" class="tab-pane active">
                         <div class="product-slider-active-2 owl-carousel">
                             <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
                                 <div class="product-img mb-15">
@@ -829,7 +861,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -837,10 +869,16 @@
             <div class="container-fluid">
                 <div class="brand-logo-border">
                     <div class="brand-logo-active owl-carousel">
+                        <?php $count = 0; foreach($list_dm as $item){ $count++ ?>
                         <div class="single-brand-logo">
-                            <img src="views/assets/images/brand-logo/brand-logo-1.png" alt="">
+                            <img style="width:100px;height:80px;line-height:188px" src="upload/icon_hang/<?php echo $item['anh_danh_muc']?>" alt="">
                         </div>
-                        <div class="single-brand-logo">
+                        <?php 
+                        if($count >= 4){
+                            break;
+                        }
+                        } ?>
+                        <!-- <div class="single-brand-logo">
                             <img src="views/assets/images/brand-logo/brand-logo-2.png" alt="">
                         </div>
                         <div class="single-brand-logo">
@@ -851,7 +889,7 @@
                         </div>
                         <div class="single-brand-logo">
                             <img src="views/assets/images/brand-logo/brand-logo-2.png" alt="">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

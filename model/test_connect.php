@@ -1,6 +1,6 @@
 <?php
 function connect_pdo(){
-    $dburl = "mysql:dbname=project1;hostname:localhost";
+    $dburl = "mysql:dbname=du_an_1;hostname:localhost";
     $user = "root";
     $pass = "";
     try{

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,6 +50,9 @@
         td{
             line-height: 50px;
         }
+        /* p{
+            color:red;
+        } */
      </style>   
 </head>
 

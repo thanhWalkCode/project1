@@ -46,11 +46,11 @@
                             <div class="main-menu menu-common-style menu-lh-3 menu-margin-4 menu-ngtv-mrg-1 menu-font-2">
                                 <nav>
                                     <ul>
-                                        <li class="angle-shape"><a href="index.html">Trang chủ</a>
+                                        <li class="angle-shape"><a href="index.php">Trang chủ</a>
                                             
                                         </li>
-                                        <li class="angle-shape"><a href="shop.html">Shop</a>
-                                            <ul class="mega-menu mega-menu-hm4">
+                                        <li class="angle-shape"><a href="index.php?act=shop">Shop</a>
+                                            <!-- <ul class="mega-menu mega-menu-hm4">
                                                 <li><a class="menu-title" href="#">Shop Layout</a>
                                                     <ul>
                                                         <li><a href="shop.html">standard style</a></li>
@@ -86,7 +86,7 @@
                                                         <li><a href="product-details-affiliate.html">Affiliate style</a></li>
                                                     </ul>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
                                         <!-- <li><a href="shop.html">Mens</a></li> -->
                                         <li class="angle-shape"><a href="#">Chi tiết giỏ hàng</a>
