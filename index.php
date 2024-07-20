@@ -4,32 +4,53 @@ include "model/connect.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
 
-$list = load_all();
+$listsanpham = load_all();
 $list_dm = loadAll_danhmuc();
 if(isset($_GET['act']) && ($_GET['act']) != ""){
 $act = $_GET['act'];
+$kyw = "";$checkshop = "";
+// $list_tendm=[];$list_tensp=[];
 switch($act){
-    case "chitietsp":
-        include "views/chitietsp.php";
-        break;    
+    case "lien_he":
+        include "views/lien_he.php";
+    break;
+    
+    case "bao_hanh":
+        include "views/bao_hanh.php";
+    break;  
 
     case "shop":
-        if(isset($_POST['search'])&&$_POST['search']){
+        if(isset($_POST['search']) && $_POST['search'] != "" ){
             $kyw=$_POST['kyw'];
-            
-        }else{
-            $kyw='';
-            
+            $list_tensp = search_sp($kyw);
         }
-        $listsanpham = search_sp($kyw);
+        if(isset($_GET['name_dm']) && $_GET['name_dm'] != ""){
+            $name_dm = $_GET['name_dm'];
+            $list_tendm = search_dm($name_dm);
+        }
+        
+        include "views/shop.php";
+        break;    
+    
+    case "phobien":
+        if(isset($_GET['gia2tr']) && $_GET['gia2tr']){
+            $gia = $_GET['gia2tr'];
+            $list_sp_price = load_sanpham_gia($gia);
+        }else if(isset($_GET['gia5tr']) && $_GET['gia5tr']){
+            $gia = $_GET['gia5tr'];
+            $list_sp_price = load_sanpham_gia($gia);
+        }
+        
         include "views/shop.php";
         break;    
 
-    case "topsp":
+    case "detail_sp":
         if(isset($_GET['id'])){
-            $load_top10 = loadAll_sanpham_top($_GET['id']);
+            $listsanpham = loadone_sanpham($_GET['id']);
+            extract($listsanpham);
         }
-        include "views/home.php";
+        $list_sp_decu = load_all();
+        include "views/detail_product.php";
         break;
 
     default: 
