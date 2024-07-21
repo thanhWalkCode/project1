@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <?php 
-                             $items_per_page = 9;
+                             $items_per_page = 3;
                              $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                              $offset = ($current_page - 1) * $items_per_page;
                              $listsanpham = load_page_sp_hientai($offset,$items_per_page);
@@ -137,7 +137,7 @@
                             </div>
                         </div>
                         <?php 
-                        }else if(isset($list_tendm) && $list_tendm != []){
+                        }else if(isset($list_tendm) && $list_tendm != [] && $list_tendm != ""){
                         ?>
                         <div class="shop-bottom-area">
                             <div class="tab-content jump">

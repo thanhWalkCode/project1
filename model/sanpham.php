@@ -79,7 +79,6 @@ function load_page_sp_hientai($offset, $items_per_page) {
     return $sp;
 }
 
-
 function loadAll_sanpham_home(){
     $sql = "SELECT * FROM `san_pham` ";
     $listsanpham = pdo_query($sql);
