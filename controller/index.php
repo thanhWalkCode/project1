@@ -1,8 +1,18 @@
 <?php
+session_start();
+if(($_GET['chuc_vu']) && ($_GET['chuc_vu']) != ""){
+    $chucvu = $_GET['chuc_vu'];
+    if($chucvu = 1){
+
+}
+}else{
+    header("location: ../index.php");
+}
 include "header.php";
 include "../model/connect.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
+include "../model/user.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     $check = "";
@@ -204,6 +214,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "sanpham/list_sp.php";
             break;
         }
+
+        case "list_user":
+
+            $list = loadAll_user();
+            include "admin/list_admin.php";
+            break;
 
 
         default:

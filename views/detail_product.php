@@ -90,7 +90,7 @@
                             <div class="pro-details-price-wrap">
                                 <div class="product-price">
                                     <span><?php echo number_format($gia_san_pham,'0',',','.') ?></span>
-                                    <span class="old"><?php echo number_format($gia_san_pham + random_int(200000,500000),'0',',','.') ?></span>
+                                    <span class="old"><?php echo number_format($gia_san_pham + ($gia_san_pham * 0.2),'0',',','.') ?></span>
                                 </div>
                                 <div class="dec-rang"><span>- giảm giá</span></div>
                             </div>

@@ -1,8 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-
-<!-- Mirrored from template.hasthemes.com/daxone/daxone/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Jul 2024 10:12:00 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -73,7 +70,7 @@
                                 <div class="setting-wrap setting-wrap-mrg border-style">
                                     <a class="setting-active" href="#">
                                         <i class="la la-cog"></i>
-                                        Tài khoản
+                                       <?php echo (isset($_SESSION['user']) && isset($_SESSION['pass'])) ? ("Chào ".$_SESSION['user']) : "Tài khoản" ?>
                                     </a>
                                     <!-- Setting account dropdown start -->
                                     <div class="setting-content">
@@ -91,14 +88,24 @@
                                                     
                                                 </ul>
                                             </li>
+                                            <?php if(isset($_SESSION['user']) && isset($_SESSION['pass'])){?>
                                             <li>
                                                 <h4>Tài khoản</h4>
                                                 <ul>
-                                                    <li><a href="login-register.html">Đăng nhập</a></li>
-                                                    <li><a href="login-register.html">Tạo tài khoản</a></li>
-                                                    <li><a href="my-account.html">Tài khoản của bạn</a></li>
+                                                    <li><a href="index.php?act=log_out" onclick="return confirm('bạn có chắc chắn muốn thoát?')">Đăng xuất</a></li>
+                                                <?php if(isset( $_SESSION['role']) && $_SESSION['role'] == 2){?>
+                                                    <li><a href="controller/index.php">Truy cập trang admin</a></li>   
+                                                <?php }?>
                                                 </ul>
                                             </li>
+                                            <?php }else{?>
+                                                <li>
+                                                <h4>Tài khoản</h4>
+                                                <ul>
+                                                    <li><a href="index.php?act=login">Đăng nhập</a></li>
+                                                </ul>
+                                            </li>
+                                            <?php }?>   
                                         </ul>
                                     </div>
                                 </div>
