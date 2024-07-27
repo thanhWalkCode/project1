@@ -127,108 +127,56 @@
                                 </div>
                             </div>
                             <div id="des-details3" class="tab-pane">
-                                <div class="dec-review-wrap mb-50">
-                                    <div class="row">
+                            <?php if(isset($list_bl) && $list_bl != []){ $count=0;$error = ""; 
+                                foreach($list_bl as $item){ ?> 
+                                <div style="background: #facccc;padding: 10px;border-radius: 20px;" class="dec-review-wrap mb-50">
+                                <div  class="row">
                                         <div class="col-xl-3 col-lg-4 col-md-5">
                                             <div class="dec-review-img-wrap">
                                                 <div class="dec-review-img">
-                                                    <img src="assets/images/product-details/review-1.png" alt="review">
+                                                    <img src="views/assets/images/product-details/review-2.png" alt="review">
                                                 </div>
                                                 <div class="dec-client-name">
-                                                    <h4>Jonathon Doe</h4>
-                                                    <div class="dec-client-rating">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-half-o"></i>
-                                                    </div>
+                                                    <h4><?php echo $item['tai_khoan']?></h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-9 col-lg-8 col-md-7">
                                             <div class="dec-review-content">
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
+                                                <p><?php echo $item['noi_dung']?></p>
                                                 <div class="review-content-bottom">
                                                     <div class="review-like">
                                                         <span><i class="la la-heart-o"></i> 24 Likes</span>
                                                     </div>
                                                     <div class="review-date">
-                                                        <span>25 Jun 2019</span>
+                                                        <span><?php echo $item['thoi_gian_binh_luan']?></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="dec-review-wrap mb-50">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-md-5">
-                                            <div class="dec-review-img-wrap">
-                                                <div class="dec-review-img">
-                                                    <img src="assets/images/product-details/review-2.png" alt="review">
-                                                </div>
-                                                <div class="dec-client-name">
-                                                    <h4>Jonathon Doe</h4>
-                                                    <div class="dec-client-rating">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-half-o"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-9 col-lg-8 col-md-7">
-                                            <div class="dec-review-content">
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
-                                                <div class="review-content-bottom">
-                                                    <div class="review-like">
-                                                        <span><i class="la la-heart-o"></i> 24 Likes</span>
-                                                    </div>
-                                                    <div class="review-date">
-                                                        <span>25 Jun 2019</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dec-review-wrap">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-md-5">
-                                            <div class="dec-review-img-wrap">
-                                                <div class="dec-review-img">
-                                                    <img src="assets/images/product-details/review-3.png" alt="review">
-                                                </div>
-                                                <div class="dec-client-name">
-                                                    <h4>Jonathon Doe</h4>
-                                                    <div class="dec-client-rating">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-half-o"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-9 col-lg-8 col-md-7">
-                                            <div class="dec-review-content">
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
-                                                <div class="review-content-bottom">
-                                                    <div class="review-like">
-                                                        <span><i class="la la-heart-o"></i> 24 Likes</span>
-                                                    </div>
-                                                    <div class="review-date">
-                                                        <span>25 Jun 2019</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                if($count >= 4){
+                                    break;
+                                }
+                                }
+                            }
+                            else{
+                                $error = ".";
+                            }
+                                ?>
+                                <h3><?php echo ($error == "") ? $error = "" : "Không có bình luận";
+                                echo (isset($error_cmt) && $error_cmt == "") ? $error_cmt = "" : "Vui lòng đăng nhập để sử dụng"
+                                ?></h3>
+                               <form action="index.php?act=detail_sp" method="post">
+                                <input type="hidden" name="id_nguoi_dung" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : "" ?>">
+                                <input type="hidden" name="id_san_pham" value="<?php echo $id ?>">
+                               <label for="noi_dung">Đánh giá của bạn</label> 
+                               <textarea style=" width: 100%; height: 100px; box-sizing: border-box; text-align: left; vertical-align: top;"
+                                name="noi_dung" blocked ></textarea>
+                                <input style="width:15%;margin-top:25px"   type="submit" value="Gửi đánh giá" name="submit_bl">
+                               </form>
                             </div>
                         </div>
                     </div>
@@ -392,6 +340,11 @@
     <script src="assets/js/plugins/smoothscroll.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    <script>
+        // default_page(event){
+        //     event.preventDefault();
+        // }
+    </script>
 </body>
 
 

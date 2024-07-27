@@ -50,9 +50,18 @@
         td{
             line-height: 50px;
         }
-        /* p{
-            color:red;
-        } */
+        #tab_pre{
+            font-size: 20px;
+            margin-left: 20px;
+            font-weight: bold;
+            color:black;
+        }
+        #active{
+            font-size: 20px;
+            margin-left: 20px;
+            font-weight: bold;
+            color: red;
+        }
      </style>   
 </head>
 
@@ -208,6 +217,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?act=listdm" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Danh mục</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?act=list_sp" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Sản phẩm</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?act=list_user" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Người dùng</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?act=list_cmt" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Bình luận</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php" aria-expanded="false" onclick="return confirm('Bạn có chắc chắn muốn thoát?')" ><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Thoát trang quản trị</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Forms </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">

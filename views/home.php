@@ -69,7 +69,7 @@
     
     <div style="height:400px;" class="product-wrap product-border-2 pro-hover-shadow mb-40">
         <div style="height: 250px;" class="product-img mb-15">
-            <a href="product-details.html"><img style="height:100%" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
+            <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="height:100%" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
             <div class="product-action-3">
                 <!-- <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a> -->
                 <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="product-content-2">
-            <h4><a href="product-details.html"><?php echo $item['ten_san_pham']?></a></h4>
+            <h4><a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><?php echo $item['ten_san_pham']?></a></h4>
             <span><?php echo $item['name']?></span>
             <div class="pro-price-2">
                 <span><?php echo number_format($item['gia_san_pham'], 0, ',', '.')?> <span style="color: red;">VNĐ</span></span>
@@ -87,99 +87,13 @@
     </div>
     
     <?php 
-    if ($count > 4) { 
+    if ($count > 8) { 
         
         break;
     } 
 } 
 ?>
-                    <!-- <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
-                        <div class="product-img mb-15">
-                            <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-2.jpg" alt="product"></a>
-                            <div class="product-action-3">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a>
-                                <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
-                                <a title="Add To Cart" href="#"><i class="la la-cart-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-2">
-                            <h4><a href="product-details.html">Simple Chair</a></h4>
-                            <span>Moving</span>
-                            <div class="pro-price-2">
-                                <span>$30.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
-                        <div class="product-img mb-15">
-                            <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-3.jpg" alt="product"></a>
-                            <div class="product-action-3">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a>
-                                <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
-                                <a title="Add To Cart" href="#"><i class="la la-cart-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-2">
-                            <h4><a href="product-details.html">Simple Chair</a></h4>
-                            <span>Moving</span>
-                            <div class="pro-price-2">
-                                <span>$40.00</span>
-                                <span class="old-price">$50.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
-                        <div class="product-img mb-15">
-                            <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-4.jpg" alt="product"></a>
-                            <div class="product-action-3">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a>
-                                <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
-                                <a title="Add To Cart" href="#"><i class="la la-cart-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-2">
-                            <h4><a href="product-details.html">Simple Chair</a></h4>
-                            <span>Moving</span>
-                            <div class="pro-price-2">
-                                <span>$60.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
-                        <div class="product-img mb-15">
-                            <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-5.jpg" alt="product"></a>
-                            <div class="product-action-3">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a>
-                                <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
-                                <a title="Add To Cart" href="#"><i class="la la-cart-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-2">
-                            <h4><a href="product-details.html">Simple Chair</a></h4>
-                            <span>Moving</span>
-                            <div class="pro-price-2">
-                                <span>$80.00</span>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- <div class="product-wrap product-border-2 pro-hover-shadow mb-40">
-                        <div class="product-img mb-15">
-                            <a href="product-details.html"><img src="views/assets/images/product/pro-hm4-2.jpg" alt="product"></a>
-                            <div class="product-action-3">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Quick View" href="#"><i class="la la-arrows"></i></a>
-                                <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
-                                <a title="Add To Cart" href="#"><i class="la la-cart-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-2">
-                            <h4><a href="product-details.html">Simple Chair</a></h4>
-                            <span>Moving</span>
-                            <div class="pro-price-2">
-                                <span>$70.00</span>
-                                <span class="old-price">$90.00</span>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
         </div>

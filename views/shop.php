@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <?php 
-                             $items_per_page = 3;
+                             $items_per_page = 9;
                              $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                              $offset = ($current_page - 1) * $items_per_page;
                              $listsanpham = load_page_sp_hientai($offset,$items_per_page);
@@ -68,7 +68,7 @@
                                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                                             <div class="product-wrap mb-35">
                                                 <div class="product-img mb-15">
-                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:300px;height:300px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
+                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:250px;height:250px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
                                                     <div class="product-action">
                                                         <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
                                                     </div>
@@ -147,7 +147,7 @@
                                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                                             <div class="product-wrap mb-35">
                                                 <div class="product-img mb-15">
-                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:300px;height:300px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
+                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:250px;height:250px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
                                                     <div class="product-action">
                                                         <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
                                                     </div>
@@ -226,7 +226,7 @@
                                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                                             <div class="product-wrap mb-35">
                                                 <div class="product-img mb-15">
-                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:300px;height:300px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
+                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:250px;height:250px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
                                                     <div class="product-action">
                                                         <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
                                                     </div>
@@ -305,7 +305,7 @@
                                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                                             <div class="product-wrap mb-35">
                                                 <div class="product-img mb-15">
-                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:300px;height:300px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
+                                                    <a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><img style="width:250px;height:250px" src="upload/<?php echo $item['anh_san_pham']?>" alt="product"></a>
                                                     <div class="product-action">
                                                         <a title="Wishlist" href="#"><i class="la la-heart-o"></i></a>
                                                     </div>
@@ -432,6 +432,8 @@
     <script src="assets/js/plugins/elevatezoom.js"></script>
     <script src="assets/js/plugins/sticky-sidebar.js"></script>
     <script src="assets/js/plugins/smoothscroll.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js">
+         
+    </script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <?php
+ob_start();
 session_start();
-if(($_GET['chuc_vu']) && ($_GET['chuc_vu']) != ""){
-    $chucvu = $_GET['chuc_vu'];
-    if($chucvu = 1){
-
+if(($_SESSION['role']) && ($_SESSION['role']) != ""){
+    $chucvu = $_SESSION['role'];
+    if($chucvu == 2){
 }
 }else{
     header("location: ../index.php");
@@ -13,6 +13,7 @@ include "../model/connect.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/user.php";
+include "../model/binhluan.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     $check = "";
@@ -82,7 +83,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case "addsp":
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['submit'])) {
                 $tensp = $_POST['tensp'];
                 $giasp = $_POST['giasp'];
                 $soluong = $_POST['soluong'];
@@ -115,7 +116,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 }
 
                 if (empty($errTen) && empty($errHinh) && empty($errPrice) && empty($errSoluong) && empty($errNgaydang) && empty($errIddm) && empty($errMota)) {
-                    $target = '../upload/' . basename($_FILES['imgsp']['name']);
+                    $target = '../upload/'.basename($_FILES['imgsp']['name']);
                     if (move_uploaded_file($_FILES['imgsp']['tmp_name'], $target)) {
 //                        var_dump($tensp, $giasp, $hinh, $soluong, $ngaydang, $iddm, $mota);
 //                        die;
@@ -221,6 +222,18 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "admin/list_admin.php";
             break;
 
+        case "list_cmt":
+            $list = loadAll_binhluan();
+            include "binhluan/list_cmt.php";
+            break;    
+
+        case "dele_cmt":
+            if(isset($_GET['id']) && $_GET['id'] != 0){
+                delete_binhluan($_GET['id']);
+                header("location:index.php?act=list_cmt");
+                exit();
+            }
+            break;     
 
         default:
             include "home.php";
@@ -231,5 +244,5 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 }
 
 include "footer.php";
-
+ob_end_flush();
 ?>

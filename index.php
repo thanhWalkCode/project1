@@ -6,10 +6,11 @@ include "model/connect.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
 include "model/user.php";
-
+include "model/binhluan.php";
 $list_user = loadAll_user();
 $listsanpham = load_all();
 $list_dm = loadAll_danhmuc();
+
 if(isset($_GET['act']) && ($_GET['act']) != ""){
 $act = $_GET['act'];
 $kyw = "";$checkshop = "";
@@ -30,6 +31,7 @@ switch($act){
                 $_SESSION['user'] = $_POST['user_name'];
                 $_SESSION['pass'] = $_POST['user_password'];
                 $_SESSION['role'] = $item['id_chuc_vu'];
+                $_SESSION['id'] = $item['id'];
                 header("location:index.php");
                 exit();
             }else{
@@ -102,13 +104,28 @@ switch($act){
         break;    
 
     case "detail_sp":
+        $error_cmt = "";
         if(isset($_GET['id'])){
             $listsanpham = loadone_sanpham($_GET['id']);
+            $list_bl = load_binhluan_theo_id($_GET['id']);
             extract($listsanpham);
         }
+        if(isset($_POST['submit_bl']) &&  $_POST['noi_dung'] != ""){
+            $noi_dung = $_POST['noi_dung'];
+            $id_nguoi_dung = $_POST['id_nguoi_dung'];
+            $id_san_pham = $_POST['id_san_pham'];
+            insert_binhluan($id_san_pham,$id_nguoi_dung,$noi_dung);
+            $listsanpham = loadone_sanpham($_POST['id_san_pham']);
+            $list_bl = load_binhluan_theo_id($_POST['id_san_pham']);
+            extract($listsanpham);
+        }else if(isset($_POST['submit_bl']) && $_POST['id_nguoi_dung'] == ""){
+            $error_cmt = "not_humna";
+        }    
+
         $list_sp_decu = load_all();
         include "views/detail_product.php";
         break;
+    
 
     default: 
     include "views/home.php";

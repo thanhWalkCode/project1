@@ -2,7 +2,6 @@
 function insert_sanpham($tensp, $giasp, $imgsp, $soluong, $ngaydang, $iddm, $mota) {
     $sql = "INSERT INTO `san_pham` (`ten_san_pham`, `gia_san_pham`, `anh_san_pham`, `so_luong`, `ngay_dang`, `id_danh_muc`, `mo_ta`) 
             VALUES ('$tensp', '$giasp', '$imgsp', '$soluong', '$ngaydang', '$iddm', '$mota')";
-
     pdo_execute($sql);
 };
 

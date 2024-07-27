@@ -73,7 +73,7 @@
                                                         <label>Lưu đăng nhập</label>
                                                         <a href="index.php?act=sign_up">Chưa có tài khoản?</a>
                                                     </div>
-                                                    <button type="submit" name="login">Đăng nhập</button>
+                                                    <button type="submit" name="login" onclick="stop(event)">Đăng nhập</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -131,7 +131,11 @@
     <script src="assets/js/plugins/sticky-sidebar.js"></script>
     <script src="assets/js/plugins/smoothscroll.js"></script>
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js">
+        function stop(event){
+            event.preventDefault();
+        }
+    </script>
 </body>
 
 
