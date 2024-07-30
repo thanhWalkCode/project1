@@ -27,7 +27,7 @@ function pdo_execute($sql){
         $stmt->execute($sql_args);
     }
     catch(PDOException $e){
-        throw $e;
+        echo "Lỗi khi thực thi câu lệnh SQL: " . $e->getMessage();
     }
     finally{
         unset($conn);
@@ -73,7 +73,7 @@ function pdo_query_one($sql){
         return $row;
     }
     catch(PDOException $e){
-        throw $e;
+        echo "".$e->getMessage();
     }
     finally{
         unset($conn);

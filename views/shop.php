@@ -119,21 +119,7 @@
                                     </div>
                                     <?php } ?>
                                 </div>
-                                <div class="pagination-style text-center">
-                                    <ul>
-                                        <?php if ($current_page > 1) { ?>
-                                            <li><a class="prev" href="index.php?act=shop&page=<?php echo $current_page - 1; ?>"><i class="la la-angle-left"></i></a></li>
-                                        <?php } ?>
-
-                                        <?php for ($page = 1; $page <= $total_pages; $page++) { ?>
-                                            <li><a class="<?php echo $page == $current_page ? 'active' : ''; ?>" href="index.php?act=shop&page=<?php echo $page; ?>"><?php echo sprintf('%02d', $page); ?></a></li>
-                                        <?php } ?>
-
-                                        <?php if ($current_page < $total_pages) { ?>
-                                            <li><a class="next" href="index.php?act=shop&page=<?php echo $current_page + 1; ?>"><i class="la la-angle-right"></i></a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
+                                
                             </div>
                         </div>
                         <?php 
@@ -198,21 +184,6 @@
                                     </div>
                                     <?php } ?>
                                 </div>
-                                <div class="pagination-style text-center">
-                                    <ul>
-                                        <?php if ($current_page > 1) { ?>
-                                            <li><a class="prev" href="index.php?act=shop&page=<?php echo $current_page - 1; ?>"><i class="la la-angle-left"></i></a></li>
-                                        <?php } ?>
-
-                                        <?php for ($page = 1; $page <= $total_pages; $page++) { ?>
-                                            <li><a class="<?php echo $page == $current_page ? 'active' : ''; ?>" href="index.php?act=shop&page=<?php echo $page; ?>"><?php echo sprintf('%02d', $page); ?></a></li>
-                                        <?php } ?>
-
-                                        <?php if ($current_page < $total_pages) { ?>
-                                            <li><a class="next" href="index.php?act=shop&page=<?php echo $current_page + 1; ?>"><i class="la la-angle-right"></i></a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <?php 
@@ -276,21 +247,6 @@
                                         </div>
                                     </div>
                                     <?php } ?>
-                                </div>
-                                <div class="pagination-style text-center">
-                                    <ul>
-                                        <?php if ($current_page > 1) { ?>
-                                            <li><a class="prev" href="index.php?act=shop&page=<?php echo $current_page - 1; ?>"><i class="la la-angle-left"></i></a></li>
-                                        <?php } ?>
-
-                                        <?php for ($page = 1; $page <= $total_pages; $page++) { ?>
-                                            <li><a class="<?php echo $page == $current_page ? 'active' : ''; ?>" href="index.php?act=shop&page=<?php echo $page; ?>"><?php echo sprintf('%02d', $page); ?></a></li>
-                                        <?php } ?>
-
-                                        <?php if ($current_page < $total_pages) { ?>
-                                            <li><a class="next" href="index.php?act=shop&page=<?php echo $current_page + 1; ?>"><i class="la la-angle-right"></i></a></li>
-                                        <?php } ?>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -357,6 +313,7 @@
                                     <?php } ?>
                                 </div>
                                 <div class="pagination-style text-center">
+                                <div class="pagination-style text-center">
                                     <ul>
                                         <?php if ($current_page > 1) { ?>
                                             <li><a class="prev" href="index.php?act=shop&page=<?php echo $current_page - 1; ?>"><i class="la la-angle-left"></i></a></li>
@@ -371,6 +328,7 @@
                                         <?php } ?>
                                     </ul>
                                 </div>
+                                </div>
                             </div>
                         </div>
                         <?php } ?>
@@ -381,8 +339,9 @@
                                 <h4 class="sidebar-title">Tìm kiếm <?php echo $kyw; ?></h4>
                                 <div class="sidebar-search mb-40 mt-20">
                                     <form class="sidebar-search-form" action="index.php?act=shop" method="post">
-                                        <input type="text" placeholder="Tìm kiếm ở đây..." name="kyw">
+                                        <input type="text" placeholder="Tìm kiếm ở đây" name="kyw">
                                         <input type="submit" name="search">
+                                        <p style="color:red"><?php echo (isset($err_kyw)) ? "Vui lòng không để trống" : ""?></p>
                                     </form>
                                 </div>
                             </div>
@@ -400,8 +359,8 @@
                                 <h4 class="sidebar-title">Thẻ phổ biến </h4>
                                 <div class="sidebar-widget-tag mt-20">
                                     <ul>
-                                        <li><a href="#">Giá rẻ</a></li>
                                         <li><a href="index.php?act=phobien&gia2tr=2000000">Giá từ 2tr trở xuống</a></li>
+                                        <li><a href="index.php?act=phobien&gia2-4tr9=<?php echo random_int(2000001,4999999)?>">Giá từ 2tr-5tr</a></li>
                                         <li><a href="index.php?act=phobien&gia5tr=5000000">Giá từ 5tr trở lên</a></li>
                                     </ul>
                                 </div>

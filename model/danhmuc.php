@@ -27,4 +27,32 @@ function update_danhmuc($id,$tenloai,$img){
     pdo_execute($sql);
     return true;
 }
+function load_total_dm() {
+    try {
+        $conn = pdo_get_connection();
+        $sql = "SELECT COUNT(*) AS total FROM danh_muc";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
+        unset($conn);
+    }
+}
+ 
+function load_page_dm_hientai($offset, $items_per_page) {
+    $sql = "SELECT * 
+            FROM danh_muc 
+            LIMIT :offset, :items_per_page"; // Sử dụng tham số để tránh SQL injection
+
+    $conn = pdo_get_connection();
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+    $stmt->bindValue(':items_per_page', (int)$items_per_page, PDO::PARAM_INT);
+    $stmt->execute();
+    $sp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $sp;
+}
 ?>

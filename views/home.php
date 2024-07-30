@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="product-content-2">
-            <h4><a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><?php echo $item['ten_san_pham']?></a></h4>
+            <h4 class="name_tag"><a href="index.php?act=detail_sp&id=<?php echo $item['id']?>"><?php echo $item['ten_san_pham']?></a></h4>
             <span><?php echo $item['name']?></span>
             <div class="pro-price-2">
                 <span><?php echo number_format($item['gia_san_pham'], 0, ',', '.')?> <span style="color: red;">VNĐ</span></span>

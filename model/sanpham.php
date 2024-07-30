@@ -47,7 +47,7 @@ function load_all() {
     return $rows;
 }
 
-function load_total_sp() {
+function load_total_sp(){
     try {
         $conn = pdo_get_connection();
         $sql = "SELECT COUNT(*) AS total FROM san_pham";
@@ -61,7 +61,22 @@ function load_total_sp() {
         unset($conn);
     }
 }
- 
+// function load_total_sp_search($list){
+//     $placeholders = implode(',', array_fill(0, count($list), '?'));
+//     try {
+//         $conn = pdo_get_connection();
+//         $sql = "SELECT COUNT(*) AS total FROM san_pham WHERE id IN ($placeholders)";
+//         $stmt = $conn->prepare($sql);
+//         $stmt->execute();
+//         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+//         return $result['total'];
+//     } catch (PDOException $e) {
+//         echo "".$e->getMessage();
+//     } finally {
+//         unset($conn);
+//     }
+// } 
+
 function load_page_sp_hientai($offset, $items_per_page) {
     $sql = "SELECT san_pham.*, danh_muc.name 
             FROM san_pham 
@@ -129,6 +144,8 @@ function load_sanpham_gia($gia){
     $sql .= " WHERE `gia_san_pham` <= $gia";    
     }else if($gia >= 5000000){
         $sql .= " WHERE `gia_san_pham` >= $gia";
+    }else if($gia >= 2000000 && $gia <= 5000000){
+        $sql .= " WHERE `gia_san_pham` >= 2000000 AND `gia_san_pham` <= 5000000";
     }
     $listsanpham = pdo_query($sql);
     return $listsanpham;

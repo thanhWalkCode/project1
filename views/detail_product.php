@@ -51,7 +51,7 @@
                     <h2>Trang chi tiết sản phẩm</h2>
                     <ul>
                         <li>
-                            <a href="index.php?act=shop">Quay về</a>
+                            <a href="index.php?act=detail_sp&id=<?php echo $id ?>">Quay về</a>
                         </li>
                         <li class="active">Chi tiết sản phẩm </li>
                     </ul>
@@ -127,45 +127,56 @@
                                 </div>
                             </div>
                             <div id="des-details3" class="tab-pane">
-                            <?php if(isset($list_bl) && $list_bl != []){ $count=0;$error = ""; 
-                                foreach($list_bl as $item){ ?> 
-                                <div style="background: #facccc;padding: 10px;border-radius: 20px;" class="dec-review-wrap mb-50">
-                                <div  class="row">
-                                        <div class="col-xl-3 col-lg-4 col-md-5">
-                                            <div class="dec-review-img-wrap">
-                                                <div class="dec-review-img">
-                                                    <img src="views/assets/images/product-details/review-2.png" alt="review">
-                                                </div>
-                                                <div class="dec-client-name">
-                                                    <h4><?php echo $item['tai_khoan']?></h4>
+                            <?php if(isset($list_bl) && $list_bl != []){ $error = "";   
+                                    foreach($list_bl as $item){    ?>
+                                    <div style="background: #facccc;padding: 10px;border-radius: 20px;" class="dec-review-wrap mb-50">
+                                    <div  class="row">
+                                            <div class="col-xl-3 col-lg-4 col-md-5">
+                                                <div class="dec-review-img-wrap">
+                                                    <div class="dec-review-img">
+                                                        <img src="views/assets/images/product-details/review-2.png" alt="review">
+                                                    </div>
+                                                    <div class="dec-client-name">
+                                                        <h4><?php echo $item['tai_khoan']?></h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-9 col-lg-8 col-md-7">
-                                            <div class="dec-review-content">
-                                                <p><?php echo $item['noi_dung']?></p>
-                                                <div class="review-content-bottom">
-                                                    <div class="review-like">
-                                                        <span><i class="la la-heart-o"></i> 24 Likes</span>
-                                                    </div>
-                                                    <div class="review-date">
-                                                        <span><?php echo $item['thoi_gian_binh_luan']?></span>
+                                            <div class="col-xl-9 col-lg-8 col-md-7">
+                                                <div class="dec-review-content">
+                                                    <p><?php echo $item['noi_dung']?></p>
+                                                    <div class="review-content-bottom">
+                                                        <div class="review-like">
+                                                            <span><i class="la la-heart-o"></i> 24 Likes</span>
+                                                        </div>
+                                                        <div class="review-date">
+                                                            <span><?php echo $item['thoi_gian_binh_luan']?></span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <?php
-                                if($count >= 4){
-                                    break;
-                                }
-                                }
-                            }
+                                <?php }
+                            }    
                             else{
                                 $error = ".";
                             }
                                 ?>
+                                <div class="pagination-style text-center">
+                                    <ul>
+                                        <?php if ($current_page > 1) { ?>
+                                            <li><a class="prev" href="index.php?act=detail_sp&id=<?php echo $id ?>&page=<?php echo $current_page - 1; ?>"><i class="la la-angle-left"></i></a></li>
+                                        <?php } ?>
+
+                                        <?php for ($page = 1; $page <= $total_pages; $page++) { ?>
+                                            <li><a class="<?php echo $page == $current_page ? 'active' : ''; ?>" href="index.php?act=detail_sp&id=<?php echo $id ?>&page=<?php echo $page; ?>"><?php echo sprintf('%02d', $page); ?></a></li>
+                                        <?php } ?>
+
+                                        <?php if ($current_page < $total_pages) { ?>
+                                            <li><a class="next" href="index.php?act=detail_sp&id=<?php echo $id ?>&page=<?php echo $current_page + 1; ?>"><i class="la la-angle-right"></i></a></li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
                                 <h3><?php echo ($error == "") ? $error = "" : "Không có bình luận";
                                 echo (isset($error_cmt) && $error_cmt == "") ? $error_cmt = "" : "Vui lòng đăng nhập để sử dụng"
                                 ?></h3>

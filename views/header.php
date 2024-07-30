@@ -25,7 +25,15 @@
     <link rel="stylesheet" href="views/assets/css/plugins/magnific-popup.css">
     <link rel="stylesheet" href="views/assets/css/plugins/jquery-ui.css">
     <link rel="stylesheet" href="views/assets/css/style.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .name_tag{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    }
+</style>
 </head>
 
 <body>

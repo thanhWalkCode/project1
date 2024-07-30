@@ -7,6 +7,7 @@ include "model/sanpham.php";
 include "model/danhmuc.php";
 include "model/user.php";
 include "model/binhluan.php";
+include "model/blog.php";
 $list_user = loadAll_user();
 $listsanpham = load_all();
 $list_dm = loadAll_danhmuc();
@@ -72,17 +73,17 @@ switch($act){
         header("location:index.php");
         exit();
         include "views/home.php";
-    break;
-
-    case "bao_hanh":
-        include "views/bao_hanh.php";
     break;  
 
     case "shop":
         if(isset($_POST['search']) && $_POST['search'] != "" ){
+        if($_POST['kyw'] == ""){
+            $err_kyw="Vui lòng điền đầy đủ thông tin";
+        }else{
             $kyw=$_POST['kyw'];
             $list_tensp = search_sp($kyw);
         }
+    }
         if(isset($_GET['name_dm']) && $_GET['name_dm'] != ""){
             $name_dm = $_GET['name_dm'];
             $list_tendm = search_dm($name_dm);
@@ -98,6 +99,9 @@ switch($act){
         }else if(isset($_GET['gia5tr']) && $_GET['gia5tr']){
             $gia = $_GET['gia5tr'];
             $list_sp_price = load_sanpham_gia($gia);
+        }else if(isset($_GET['gia2-4tr9']) && $_GET['gia2-4tr9']){
+            $gia = $_GET['gia2-4tr9'];
+            $list_sp_price = load_sanpham_gia($gia);
         }
         
         include "views/shop.php";
@@ -105,9 +109,13 @@ switch($act){
 
     case "detail_sp":
         $error_cmt = "";
+        $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $items_per_page = 4;
+        $offset = ($current_page - 1) * $items_per_page;
         if(isset($_GET['id'])){
-            $listsanpham = loadone_sanpham($_GET['id']);
-            $list_bl = load_binhluan_theo_id($_GET['id']);
+            $id = $_GET['id'];
+            $listsanpham = loadone_sanpham($id);
+            $list_bl = load_page_cmt_hientai_idsp($id,$offset, $items_per_page);
             extract($listsanpham);
         }
         if(isset($_POST['submit_bl']) &&  $_POST['noi_dung'] != ""){
@@ -121,11 +129,20 @@ switch($act){
         }else if(isset($_POST['submit_bl']) && $_POST['id_nguoi_dung'] == ""){
             $error_cmt = "not_humna";
         }    
+        $total_items = load_total_cmt();
+        $total_pages = ceil($total_items / $items_per_page);
 
         $list_sp_decu = load_all();
         include "views/detail_product.php";
         break;
     
+        case "bao_hanh":
+            include "views/bao_hanh.php";
+        break;
+
+        case "blog":
+            include "views/blog.php";
+        break;
 
     default: 
     include "views/home.php";

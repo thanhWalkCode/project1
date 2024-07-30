@@ -3,7 +3,7 @@ ob_start();
 session_start();
 if(($_SESSION['role']) && ($_SESSION['role']) != ""){
     $chucvu = $_SESSION['role'];
-    if($chucvu == 2){
+    if($chucvu == 2){   
 }
 }else{
     header("location: ../index.php");
@@ -14,11 +14,14 @@ include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/user.php";
 include "../model/binhluan.php";
+include "../model/blog.php";
+
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     $check = "";
     $check_dm = "";
     switch ($act) {
+        // danh mục
         case "deledm":
             if (isset($_GET['id']) && ($_GET['id'])) {
                 delete_danhmuc($_GET['id']);
@@ -76,9 +79,18 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "danhmuc/listdm.php";
             break;
 
-
+        // sản phẩm        
         case "list_sp":
-            $list = load_all();
+            $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $items_per_page = 4;
+            $offset = ($current_page - 1) * $items_per_page;
+            $listsanpham = load_page_sp_hientai($offset,$items_per_page);
+            if(isset($_POST['search']) && $_POST['search'] != "" ){
+                $kyw=$_POST['kyw'];
+                $list_tensp = search_sp($kyw);
+            }
+            $total_items = load_total_sp();
+            $total_pages = ceil($total_items / $items_per_page);
             include "sanpham/list_sp.php";
             break;
 
@@ -118,8 +130,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 if (empty($errTen) && empty($errHinh) && empty($errPrice) && empty($errSoluong) && empty($errNgaydang) && empty($errIddm) && empty($errMota)) {
                     $target = '../upload/'.basename($_FILES['imgsp']['name']);
                     if (move_uploaded_file($_FILES['imgsp']['tmp_name'], $target)) {
-//                        var_dump($tensp, $giasp, $hinh, $soluong, $ngaydang, $iddm, $mota);
-//                        die;
+
                         insert_sanpham($tensp, $giasp, $hinh, $soluong, $ngaydang, $iddm, $mota);
                        
                     } else {
@@ -132,11 +143,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "sanpham/add.php";
             break;
 
-        case "list_sp":
-
-            $list = load_all();
-            include "sanpham/list_sp.php";
-            break;
+        
 
         case "sua_sp":
         {
@@ -215,9 +222,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "sanpham/list_sp.php";
             break;
         }
-
+        // user
         case "list_user":
-
             $list = loadAll_user();
             include "admin/list_admin.php";
             break;
@@ -234,6 +240,99 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 exit();
             }
             break;     
+        
+        // blog 
+        case "list_blog":
+            include "blog/list_blog.php";
+            break;    
+
+        case "add_blog":
+            if (!isset($_SESSION['id'])) {
+                die("ID người dùng không tồn tại trong session.");
+            }
+            if (isset($_POST['submit'])) {
+                $tieu_de_blog = $_POST['tieu_de_blog'];
+                $id_user = $_POST['id_user'];
+                $mota = $_POST['mota'];
+                $url = $_POST['url'];
+                $hinh = $_FILES['imgblog']['name'];
+            
+                $errTen = $errHinh = $errMota = $errUrl = null;
+            
+                if (empty($tieu_de_blog)) {
+                    $errTen = 'Vui lòng nhập tiêu đề blog';
+                }
+                if ($_FILES['imgblog']['error'] != UPLOAD_ERR_OK) {
+                    $errHinh = 'Vui lòng chọn ảnh';
+                }
+                if (empty($mota)) {
+                    $errMota = 'Vui lòng nhập mô tả';
+                }
+                if (empty($url)) {
+                    $errUrl = 'Vui lòng nhập mô tả';
+                }
+            
+                if (empty($errTen) && empty($errHinh) && empty($errMota)) {
+                    $target = '../upload/blog/' . basename($hinh);
+                    if (move_uploaded_file($_FILES['imgblog']['tmp_name'], $target)) {
+                        insert_blog($id_user, $tieu_de_blog, $hinh, $mota,$url);
+                        echo "Bài viết đã được thêm thành công.";
+                    } else {
+                        $errHinh = 'Có lỗi xảy ra khi tải file.';
+                    }
+                }
+            }
+            include "blog/add.php";
+            break;
+        
+        case "dele_blog":
+            if(isset($_GET['id']) && $_GET['id']){
+                delete_blog($_GET['id']);
+            }
+            include "blog/list_blog.php";
+            break;     
+
+        case "sua_blog":
+            {
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $blog = loadOne_blog($_GET['id']);
+                }
+                // $list = loadAll_blog();
+                include "blog/edit.php";
+                break;
+            }
+        
+        case "update_blog":
+        {   $errTen = $errMota = $errurl = null;
+            if (isset($_POST['submit'])) {
+                $id = $_POST['id'];
+                $tieude = $_POST['tieude'];
+                $mota = $_POST['mota'];
+                $url = $_POST['url'];
+                $img = $_FILES['img']['name'];
+
+
+                if (empty($tensp)) {
+                    $errTen = 'Vui lòng nhập tên sản phẩm';
+                }
+                if (empty($url)) {
+                    $errUrl = 'Vui lòng nhập tên sản phẩm';
+                }
+                if (empty($mota)) {
+                    $errMota = 'Vui lòng nhập mô tả';
+                }
+                else{
+                    $target = '../upload/blog/' . basename($_FILES['img']['name']);
+                    move_uploaded_file($_FILES['img']['tmp_name'], $target);
+
+                    update_blog($id,$tieude,$img,$mota,$url);
+                }
+
+
+            }
+            include "blog/list_blog.php";
+            break;
+        }
 
         default:
             include "home.php";
